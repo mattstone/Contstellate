@@ -4,7 +4,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Don't require master key for credentials
-  config.require_master_key = false
+#  config.require_master_key = false
+  config.active_record.encryption.primary_key = Rails.application.credentials.dig(:active_record_encryption, :primary_key)
 
   # Code is not reloaded between requests.
   config.enable_reloading = false

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Gradient for stars -->
+    <radialGradient id="SvgjsRadialGradient1001" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1"></stop>
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:0.8"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="32" height="32" fill="#0A0E27" rx="6"></rect>
+
+  <!-- Simplified Southern Cross - 5 stars only, no connection lines for clarity at small size -->
+  
+  <!-- Alpha Crucis (top) - brightest -->
+  <circle cx="16" cy="8" r="2.5" fill="#FFE57F"></circle>
+  
+  <!-- Beta Crucis (bottom) -->
+  <circle cx="16" cy="24" r="2.2" fill="#FFE57F"></circle>
+  
+  <!-- Gamma Crucis (left) -->
+  <circle cx="10" cy="14" r="2" fill="#FFA500"></circle>
+  
+  <!-- Delta Crucis (right) -->
+  <circle cx="22" cy="18" r="1.8" fill="#FFA500"></circle>
+  
+  <!-- Epsilon Crucis (small center star) -->
+  <circle cx="18" cy="16" r="1.3" fill="#FFD700"></circle>
+  
+  <!-- Subtle glow effect -->
+  <circle cx="16" cy="8" r="1.2" fill="#FFFFFF" opacity="0.8"></circle>
+  <circle cx="16" cy="24" r="1" fill="#FFFFFF" opacity="0.8"></circle>
+  <circle cx="10" cy="14" r="0.9" fill="#FFFFFF" opacity="0.7"></circle>
+  <circle cx="22" cy="18" r="0.8" fill="#FFFFFF" opacity="0.7"></circle>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
