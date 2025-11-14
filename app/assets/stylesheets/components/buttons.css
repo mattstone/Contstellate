@@ -1,0 +1,83 @@
+/* Buttons - All CSP Compliant */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-body);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  transition: all var(--timing-small) ease-out;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+/* Primary Button - Glowing gradient */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button - Ghost style */
+.btn-secondary {
+  background: transparent;
+  color: var(--text-light);
+  border-color: rgba(224, 231, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(224, 231, 255, 0.6);
+  background: rgba(224, 231, 255, 0.05);
+}
+
+/* Large Button */
+.btn-large {
+  min-height: var(--touch-large);
+  font-size: calc(var(--text-body) + 2px);
+  padding: var(--space-md) var(--space-lg);
+}
+
+/* Small Button */
+.btn-small {
+  min-height: 40px;
+  font-size: var(--text-small);
+  padding: var(--space-xs) var(--space-sm);
+}
+
+/* Full Width Button */
+.btn-block {
+  width: 100%;
+  display: flex;
+}
+
+/* Icon Button */
+.btn-icon {
+  min-width: var(--touch-min);
+  padding: var(--space-sm);
+  aspect-ratio: 1;
+}
+
+/* Disabled State */
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn:disabled:hover {
+  box-shadow: none;
+}

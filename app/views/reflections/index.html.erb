@@ -1,0 +1,69 @@
+<div class="screen">
+  <div class="screen-content">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="flex justify-between items-center mt-md mb-lg">
+        <%= link_to "←", root_path, class: "btn btn-icon btn-secondary" %>
+        <h1 class="text-h1">Your Reflections</h1>
+        <div class="w-12"></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="card p-md mb-lg text-center">
+        <div class="text-h2"><%= @sessions.count %></div>
+        <div class="text-small text-dim">Sessions Completed</div>
+      </div>
+
+      <!-- Sessions Timeline -->
+      <div class="stack-md">
+        <% if @sessions.any? %>
+          <% @sessions.each do |session| %>
+            <%= link_to reflection_path(session), class: "block" do %>
+              <div class="card card-interactive p-md">
+                <div class="flex justify-between items-start mb-sm">
+                  <div>
+                    <div class="text-body font-semibold">
+                      <%= session.created_at.strftime("%B %d, %Y") %>
+                    </div>
+                    <div class="text-small text-dim">
+                      <%= session.created_at.strftime("%l:%M %p") %>
+                    </div>
+                  </div>
+                  <div class="badge">
+                    <%= session.mode == "solo" ? "🌟 Solo" : "✨ Group" %>
+                  </div>
+                </div>
+
+                <!-- Galaxy Icons -->
+                <div class="flex gap-xs items-center mt-md">
+                  <% session.galaxies.limit(5).each do |galaxy| %>
+                    <span class="text-h2" title="<%= galaxy.name %>"><%= galaxy.icon %></span>
+                  <% end %>
+                  <% if session.galaxies.count > 5 %>
+                    <span class="text-small text-dim">+<%= session.galaxies.count - 5 %> more</span>
+                  <% end %>
+                </div>
+
+                <div class="text-tiny text-dim mt-sm">
+                  <%= session.reflections.select(&:has_content?).count %> reflections
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <!-- Empty State -->
+          <div class="text-center mt-xl">
+            <div class="text-display mb-md">🌌</div>
+            <div class="text-body text-dim">
+              No reflections yet<br>
+              Begin your first journey
+            </div>
+            <%= link_to "Start Reflecting", select_mode_path, class: "btn btn-primary mt-md" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="screen starfield">
+  <div class="screen-content">
+    <div class="container">
+
+      <!-- Header with Progress -->
+      <div class="flex justify-between items-center mt-md mb-lg">
+        <%= link_to "←", galaxies_path, class: "btn btn-icon btn-secondary" %>
+
+        <div class="flex gap-sm items-center">
+          <% if @mode == "group" %>
+            <span class="badge">Player <%= @current_player %> / <%= @player_count %></span>
+          <% end %>
+          <span class="badge badge-primary">
+            <%= @galaxies_visited %> / 11 galaxies
+          </span>
+        </div>
+      </div>
+
+      <!-- Question Display -->
+      <div class="fade-in">
+        <!-- Galaxy Icon -->
+        <div class="text-center mb-md">
+          <div class="text-display pulse"><%= @current_question.galaxy.icon %></div>
+          <div class="text-small text-dim mt-xs"><%= @current_question.galaxy.name %></div>
+        </div>
+
+        <!-- The Question -->
+        <div class="question-text">
+          "<%= @current_question.content %>"
+        </div>
+
+        <div class="spacer-xl"></div>
+
+        <!-- Solo Mode: Note Taking + Voice Recording -->
+        <% if @mode == "solo" %>
+          <%= form_with url: save_reflection_session_path(@session), method: :post, data: { turbo: false } do |f| %>
+            <%= f.hidden_field :question_id, value: @current_question.id %>
+
+            <!-- Note Input -->
+            <div class="form-group">
+              <label class="form-label">Your Reflection (optional)</label>
+              <%= f.text_area :note,
+                  class: "form-textarea",
+                  placeholder: "Take a moment to reflect...",
+                  rows: 5 %>
+            </div>
+
+            <!-- Voice Recording -->
+            <div class="form-group" data-controller="voice-recorder">
+              <label class="form-label">Or Record Your Thoughts</label>
+              <button
+                type="button"
+                class="btn btn-secondary btn-block"
+                data-action="click->voice-recorder#toggleRecording"
+                data-voice-recorder-target="recordButton"
+              >
+                🎙️ Record Voice Note
+              </button>
+              <%= f.hidden_field :voice_recording_url, data: { voice_recorder_target: "urlField" } %>
+
+              <!-- Recording Status (shown when recording) -->
+              <div class="hidden mt-sm text-center text-small" data-voice-recorder-target="status">
+                <span class="badge">⏺ Recording...</span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-sm mt-lg">
+              <%= button_to "Skip", skip_question_session_path(@session, question_id: @current_question.id), method: :post, class: "btn btn-secondary flex-1" %>
+              <%= f.submit "Next ✨", class: "btn btn-primary flex-1" %>
+            </div>
+          <% end %>
+
+        <!-- Group Mode: Discussion Prompt -->
+        <% else %>
+          <div class="text-center stack-md">
+            <div class="card p-lg">
+              <div class="text-small text-dim mb-md">Instructions:</div>
+              <div class="stack-sm text-body">
+                <p>📖 Take a moment to reflect</p>
+                <p>💬 Share with the group</p>
+                <p>➡️ Then pass the device</p>
+              </div>
+            </div>
+
+            <%= form_with url: next_question_session_path(@session), method: :post, data: { turbo: false } do |f| %>
+              <%= button_tag "Ready for Next Person", class: "btn btn-primary btn-large btn-block mt-md", type: :submit %>
+            <% end %>
+
+            <%= button_to "End Session", constellation_session_path(@session), method: :get, class: "btn btn-secondary btn-block mt-sm" %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

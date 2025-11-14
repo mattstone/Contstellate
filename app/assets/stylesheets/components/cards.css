@@ -1,0 +1,133 @@
+/* Cards */
+
+.card {
+  background: var(--bg-space-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  border: 1px solid rgba(224, 231, 255, 0.1);
+  transition: all var(--timing-medium) ease-out;
+}
+
+.card:hover {
+  border-color: rgba(224, 231, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Interactive Card (clickable) */
+.card-interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-interactive:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Mode Selection Card */
+.card-mode {
+  text-align: center;
+  padding: var(--space-lg);
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.card-mode-icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.card-mode-title {
+  font-size: var(--text-h2);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-xs);
+}
+
+.card-mode-description {
+  font-size: var(--text-small);
+  color: var(--text-dim);
+}
+
+/* Galaxy Card */
+.card-galaxy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  gap: var(--space-xs);
+  text-align: center;
+  position: relative;
+  min-height: 140px;
+  aspect-ratio: 1 / 1;
+}
+
+/* Galaxy Card - Horizontal Layout (for single column) */
+.card-galaxy-horizontal {
+  flex-direction: row;
+  text-align: left;
+  aspect-ratio: auto;
+  min-height: 80px;
+  gap: var(--space-md);
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-galaxy-horizontal .card-galaxy-icon {
+  flex-shrink: 0;
+  font-size: 48px;
+}
+
+.card-galaxy-horizontal .card-galaxy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.card-galaxy-horizontal .card-galaxy-name {
+  font-size: var(--text-body);
+}
+
+.card-galaxy-horizontal .card-galaxy-count {
+  font-size: var(--text-small);
+}
+
+.card-galaxy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--galaxy-color, transparent) 0%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--timing-medium) ease;
+}
+
+.card-galaxy:hover::before {
+  opacity: 1;
+}
+
+.card-galaxy-icon {
+  font-size: 40px;
+  filter: drop-shadow(0 0 10px var(--galaxy-color, rgba(255, 255, 255, 0.3)));
+}
+
+.card-galaxy-name {
+  font-size: var(--text-small);
+  font-weight: var(--font-medium);
+}
+
+.card-galaxy-count {
+  font-size: var(--text-tiny);
+  color: var(--text-dim);
+}

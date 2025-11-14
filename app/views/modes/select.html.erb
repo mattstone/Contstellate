@@ -1,0 +1,66 @@
+<div class="screen">
+  <div class="screen-content">
+    <div class="container">
+      <div class="max-w-md">
+
+        <!-- Header -->
+        <div class="stack-md text-center mt-lg mb-xl">
+          <%= link_to "←", root_path, class: "btn btn-icon btn-secondary" %>
+          <h1 class="text-h1 mt-md">How would you like to explore today?</h1>
+        </div>
+
+        <!-- Mode Cards -->
+        <div class="stack-md" data-controller="group-mode">
+
+        <!-- Solo Reflection -->
+        <%= form_with url: choose_mode_path, method: :post, data: { turbo: false } do |f| %>
+          <%= f.hidden_field :mode, value: "solo" %>
+          <button type="submit" class="card card-mode card-interactive w-full">
+            <div class="card-mode-icon">🌟</div>
+            <div>
+              <div class="card-mode-title">Solo Reflection</div>
+              <div class="card-mode-description">
+                Explore your inner universe
+              </div>
+            </div>
+          </button>
+        <% end %>
+
+        <!-- Group Play -->
+        <%= form_with url: choose_mode_path, method: :post, data: { turbo: false } do |f| %>
+          <%= f.hidden_field :mode, value: "group" %>
+
+          <button type="button" class="card card-mode card-interactive w-full" data-action="click->group-mode#showPlayerCount">
+            <div class="card-mode-icon">✨✨</div>
+            <div>
+              <div class="card-mode-title">Group Play</div>
+              <div class="card-mode-description">
+                Create constellations together<br>
+                <span class="text-tiny">(Pass & Play - one device)</span>
+              </div>
+            </div>
+          </button>
+
+          <!-- Player Count Selection (Hidden initially) -->
+          <div class="hidden mt-md" data-group-mode-target="playerSelector">
+            <div class="card p-md">
+              <div class="form-group">
+                <label class="form-label">How many people?</label>
+                <%= f.select :player_count,
+                    options_for_select(2..10),
+                    {},
+                    class: "form-input" %>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                Start Group Session
+              </button>
+            </div>
+          </div>
+        <% end %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

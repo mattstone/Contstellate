@@ -1,0 +1,75 @@
+<div class="screen">
+  <div class="screen-content">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="flex justify-between items-center mt-md mb-md">
+        <%= link_to "←", select_mode_path, class: "btn btn-icon btn-secondary" %>
+        <%= button_to "Random Mode ⚡", random_galaxy_path, class: "btn btn-secondary btn-small" %>
+      </div>
+
+      <div class="text-center mb-lg">
+        <h1 class="text-h1 mb-xs">Choose your galaxy</h1>
+        <p class="text-small text-dim">(or tap Random for mixed questions)</p>
+      </div>
+
+      <!-- Galaxy Grid -->
+      <!-- Full-width horizontal cards with icon on left, text on right -->
+      <div class="max-w-md">
+        <div class="stack-md">
+          <% @galaxies.each do |galaxy| %>
+            <%= form_with url: choose_galaxy_path, method: :post, data: { turbo: false }, class: "w-full" do |f| %>
+              <%= f.hidden_field :galaxy_id, value: galaxy.id %>
+              <button
+                type="submit"
+                class="card card-galaxy card-galaxy-horizontal card-interactive"
+                data-controller="galaxy-card"
+                data-galaxy-card-color-value="<%= galaxy.color %>"
+              >
+                <div class="card-galaxy-icon"><%= galaxy.icon %></div>
+                <div class="card-galaxy-content">
+                  <div class="card-galaxy-name"><%= galaxy.name.gsub(' Star', '') %></div>
+                  <div class="card-galaxy-count"><%= galaxy.question_count %> questions</div>
+                </div>
+              </button>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- OPTION 2: Square grid cards (2 columns mobile / 3 columns desktop) -->
+      <!-- Uncomment this section and comment out Option 1 to use -->
+      <!--
+      <div class="grid grid-responsive-2 gap-md">
+        <% @galaxies.each do |galaxy| %>
+          <%= form_with url: choose_galaxy_path, method: :post, data: { turbo: false } do |f| %>
+            <%= f.hidden_field :galaxy_id, value: galaxy.id %>
+            <button
+              type="submit"
+              class="card card-galaxy card-interactive"
+              data-controller="galaxy-card"
+              data-galaxy-card-color-value="<%= galaxy.color %>"
+            >
+              <div class="card-galaxy-icon"><%= galaxy.icon %></div>
+              <div class="card-galaxy-name"><%= galaxy.name.gsub(' Star', '') %></div>
+              <div class="card-galaxy-count"><%= galaxy.question_count %> questions</div>
+            </button>
+          <% end %>
+        <% end %>
+      </div>
+      -->
+
+      <div class="spacer-lg"></div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Galaxy-specific colors via inline CSS variables (CSP safe) */
+  <% @galaxies.each do |galaxy| %>
+    [data-galaxy-card-color-value="<%= galaxy.color %>"] {
+      --galaxy-color: <%= galaxy.color %>;
+    }
+  <% end %>
+</style>

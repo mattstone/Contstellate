@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mode: MyString
+  started_at: 2025-11-14 11:31:09
+  completed_at: 2025-11-14 11:31:09
+  galaxies_visited: 1
+
+two:
+  mode: MyString
+  started_at: 2025-11-14 11:31:09
+  completed_at: 2025-11-14 11:31:09
+  galaxies_visited: 1

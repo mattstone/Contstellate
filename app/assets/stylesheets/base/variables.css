@@ -1,0 +1,107 @@
+/* Constellate Design System - CSS Variables */
+
+:root {
+  /* === COLORS === */
+
+  /* Space Theme */
+  --bg-space: #0A0E27;
+  --bg-space-light: #141A3E;
+  --text-light: #E0E7FF;
+  --text-dim: #94A3B8;
+
+  /* Accent Gradient */
+  --accent-primary: #667EEA;
+  --accent-secondary: #764BA2;
+
+  /* Galaxy Colors */
+  --career: #2563EB;
+  --purpose: #7C3AED;
+  --relationships: #EC4899;
+  --creativity: #F59E0B;
+  --health: #10B981;
+  --adventure: #14B8A6;
+  --finance: #F59E0B;
+  --learning: #0EA5E9;
+  --community: #8B5CF6;
+  --spirituality: #6D28D9;
+  --environment: #92400E;
+
+  /* State Colors */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* === TYPOGRAPHY === */
+
+  /* Font Family */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+  /* Font Sizes */
+  --text-display: 48px;
+  --text-h1: 32px;
+  --text-h2: 24px;
+  --text-body: 20px;
+  --text-small: 16px;
+  --text-tiny: 14px;
+
+  /* Line Height */
+  --line-height: 1.6;
+  --line-height-tight: 1.3;
+
+  /* Font Weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* === SPACING (8px grid) === */
+  --space-micro: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+
+  /* === LAYOUT === */
+  --max-width: 800px;
+  --container-padding: var(--space-sm);
+
+  /* === TOUCH TARGETS === */
+  --touch-min: 48px;
+  --touch-large: 56px;
+
+  /* === BORDERS === */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+
+  /* === ANIMATION TIMING === */
+  --timing-micro: 100ms;
+  --timing-small: 200ms;
+  --timing-medium: 300ms;
+  --timing-large: 500ms;
+
+  /* === Z-INDEX === */
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-overlay: 50;
+  --z-modal: 100;
+  --z-toast: 200;
+}
+
+/* Mobile Overrides (smaller sizes for very small screens) */
+@media (max-width: 375px) {
+  :root {
+    --text-display: 40px;
+    --text-h1: 28px;
+    --text-body: 18px;
+  }
+}

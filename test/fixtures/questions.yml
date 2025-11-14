@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  galaxy: one
+  used_count: 1
+
+two:
+  content: MyText
+  galaxy: two
+  used_count: 1

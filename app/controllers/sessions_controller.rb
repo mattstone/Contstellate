@@ -60,10 +60,22 @@ class SessionsController < ApplicationController
     # Add galaxy to session if not already added
     @session.add_galaxy(question.galaxy) unless @session.galaxies.include?(question.galaxy)
 
-    # Clear current question
+    # Clear current question and get next one
     session[:current_question_id] = nil
+    next_q = get_next_question
 
-    redirect_to next_question_session_path(@session), notice: "Reflection saved"
+    if next_q
+      # Update current player for group mode
+      if @session.group?
+        current_player = session[:current_player] || 1
+        session[:current_player] = current_player < @session.player_count ? current_player + 1 : 1
+      end
+
+      redirect_to prompt_session_path(@session)
+    else
+      # No more questions, go to constellation
+      redirect_to constellation_session_path(@session)
+    end
   end
 
   def skip_question
@@ -78,9 +90,22 @@ class SessionsController < ApplicationController
     # Still mark as used
     Question.find(question_id).mark_as_used!
 
+    # Clear current question and get next one
     session[:current_question_id] = nil
+    next_q = get_next_question
 
-    redirect_to next_question_session_path(@session)
+    if next_q
+      # Update current player for group mode
+      if @session.group?
+        current_player = session[:current_player] || 1
+        session[:current_player] = current_player < @session.player_count ? current_player + 1 : 1
+      end
+
+      redirect_to prompt_session_path(@session)
+    else
+      # No more questions, go to constellation
+      redirect_to constellation_session_path(@session)
+    end
   end
 
   def constellation

@@ -1,0 +1,51 @@
+<div class="screen starfield">
+  <div class="screen-content screen-center">
+    <div class="container text-center">
+
+      <!-- Constellation Visualization -->
+      <div class="fade-in">
+        <div class="mb-xl" data-controller="constellation" data-constellation-galaxies-value="<%= @visited_galaxies.map { |g| { icon: g.icon, color: g.color } }.to_json %>">
+          <!-- SVG Constellation will be rendered here by Stimulus -->
+          <div data-constellation-target="canvas" class="flex justify-center items-center gap-md flex-wrap mb-md">
+            <% @visited_galaxies.each do |galaxy| %>
+              <div class="text-display" title="<%= galaxy.name %>">
+                <%= galaxy.icon %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Completion Message -->
+        <div class="stack-lg max-w-md mx-auto">
+          <h1 class="text-h1">Your constellation<br>of insights</h1>
+
+          <div class="text-body text-dim">
+            <p>You explored <%= @visited_galaxies.count %> <%= "galaxy".pluralize(@visited_galaxies.count) %></p>
+            <p>and reflected on <%= @reflections_with_content %> meaningful <%= "question".pluralize(@reflections_with_content) %></p>
+          </div>
+
+          <div class="spacer-md"></div>
+
+          <!-- Actions -->
+          <div class="stack-sm">
+            <% if @session.solo? && @reflections_with_content > 0 %>
+              <%= link_to "View Your Reflections", reflection_path(@session), class: "btn btn-primary btn-large btn-block" %>
+            <% end %>
+
+            <%= link_to "Continue Exploring", galaxies_path, class: "btn btn-secondary btn-block" %>
+
+            <%= link_to "Done for Now", root_path, class: "btn btn-secondary btn-block" %>
+          </div>
+
+          <div class="spacer-sm"></div>
+
+          <!-- Gentle Affirmation -->
+          <div class="text-small text-dim mt-md">
+            ✨ Thank you for taking time to reflect
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

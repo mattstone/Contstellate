@@ -1,0 +1,36 @@
+<div class="screen starfield">
+  <div class="screen-content screen-center">
+    <div class="container fade-in">
+      <div class="max-w-md text-center stack-lg">
+
+        <!-- App Title -->
+        <div class="stack-md">
+          <h1 class="text-display">Constellate</h1>
+          <p class="text-h2 text-dim font-regular">
+            Where conversations form<br>constellations of meaning
+          </p>
+        </div>
+
+        <div class="spacer-xl"></div>
+
+        <!-- Primary CTA -->
+        <div class="stack-sm" data-controller="navigate">
+          <%= link_to "Begin Your Journey", select_mode_path, class: "btn btn-primary btn-large btn-block" %>
+
+          <!-- Learn More (optional) -->
+          <!-- <button class="btn btn-secondary btn-block">Learn More</button> -->
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <!-- Quick Access to Reflections -->
+        <% if Session.completed.any? %>
+          <div class="text-small text-dim">
+            <%= link_to "View Past Reflections →", reflections_path, class: "text-dim" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

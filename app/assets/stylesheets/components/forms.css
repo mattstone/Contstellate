@@ -1,0 +1,92 @@
+/* Forms */
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-small);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-xs);
+  color: var(--text-light);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: var(--space-sm);
+  font-size: var(--text-body);
+  background: var(--bg-space-light);
+  border: 2px solid rgba(224, 231, 255, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--text-light);
+  transition: border-color var(--timing-small) ease;
+  min-height: var(--touch-min);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: var(--line-height);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-dim);
+}
+
+/* Radio/Checkbox Groups */
+.form-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.form-radio-option {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm);
+  background: var(--bg-space-light);
+  border: 2px solid rgba(224, 231, 255, 0.2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--timing-small) ease;
+  min-height: var(--touch-min);
+}
+
+.form-radio-option:hover {
+  border-color: rgba(224, 231, 255, 0.4);
+  background: rgba(224, 231, 255, 0.05);
+}
+
+.form-radio-option input[type="radio"] {
+  margin-right: var(--space-sm);
+  width: 20px;
+  height: 20px;
+}
+
+/* Helper Text */
+.form-helper {
+  font-size: var(--text-tiny);
+  color: var(--text-dim);
+  margin-top: var(--space-xs);
+}
+
+/* Error State */
+.form-error {
+  border-color: var(--color-error);
+}
+
+.form-error-message {
+  color: var(--color-error);
+  font-size: var(--text-tiny);
+  margin-top: var(--space-xs);
+}

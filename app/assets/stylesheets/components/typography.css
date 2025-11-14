@@ -1,0 +1,95 @@
+/* Typography */
+
+.text-display {
+  font-size: var(--text-display);
+  font-weight: var(--font-bold);
+  line-height: var(--line-height-tight);
+  background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-h1 {
+  font-size: var(--text-h1);
+  font-weight: var(--font-semibold);
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--font-semibold);
+}
+
+.text-body {
+  font-size: var(--text-body);
+}
+
+.text-small {
+  font-size: var(--text-small);
+}
+
+.text-tiny {
+  font-size: var(--text-tiny);
+}
+
+/* Text Colors */
+.text-light {
+  color: var(--text-light);
+}
+
+.text-dim {
+  color: var(--text-dim);
+}
+
+.text-white {
+  color: white;
+}
+
+/* Text Alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Font Weights */
+.font-regular {
+  font-weight: var(--font-regular);
+}
+
+.font-medium {
+  font-weight: var(--font-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-bold);
+}
+
+/* Question Text - Special styling for prompts */
+.question-text {
+  font-size: var(--text-h1);
+  font-weight: var(--font-medium);
+  line-height: var(--line-height);
+  color: var(--text-light);
+  margin: var(--space-xl) 0;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .question-text {
+    font-size: var(--text-h2);
+  }
+}
