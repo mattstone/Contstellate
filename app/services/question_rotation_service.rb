@@ -35,11 +35,8 @@ class QuestionRotationService
       .limit(count)
 
     # If we've asked all questions from this galaxy in this session,
-    # reset and get least used overall
-    if available_questions.empty?
-      available_questions = galaxy.questions.least_used.limit(count)
-    end
-
+    # return empty (session is complete for this galaxy)
+    # Don't reset - user should move to another galaxy or end session
     available_questions.to_a
   end
 

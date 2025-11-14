@@ -152,11 +152,23 @@ class SessionsController < ApplicationController
 
       # Add the question's galaxy to visited galaxies
       @session.add_galaxy(question.galaxy) if question
-    else
+    elsif selected_galaxy_id.present?
       # Specific galaxy mode
       galaxy = Galaxy.find(selected_galaxy_id)
       rotation_service = QuestionRotationService.new(session: @session, galaxy: galaxy)
       question = rotation_service.next_question
+    else
+      # No galaxy selected - use the first galaxy from the session
+      galaxy = @session.galaxies.first
+      if galaxy
+        rotation_service = QuestionRotationService.new(session: @session, galaxy: galaxy)
+        question = rotation_service.next_question
+        # Store galaxy ID for future requests
+        session[:selected_galaxy_id] = galaxy.id
+      else
+        # No galaxies at all - return nil to end session
+        question = nil
+      end
     end
 
     # Store in session
