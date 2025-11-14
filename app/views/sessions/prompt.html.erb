@@ -1,4 +1,4 @@
-<div class="screen starfield">
+<div class="screen">
   <div class="screen-content">
     <div class="container">
 
@@ -18,14 +18,8 @@
 
       <!-- Question Display -->
       <div class="fade-in">
-        <!-- Galaxy Icon -->
-        <div class="text-center mb-md">
-          <div class="text-display pulse"><%= @current_question.galaxy.icon %></div>
-          <div class="text-small text-dim mt-xs"><%= @current_question.galaxy.name %></div>
-        </div>
-
         <!-- The Question -->
-        <div class="question-text">
+        <div class="question-hero">
           "<%= @current_question.content %>"
         </div>
 

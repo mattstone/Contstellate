@@ -93,3 +93,105 @@
     font-size: var(--text-h2);
   }
 }
+
+/* Question Hero - Enhanced version with wow factor */
+.question-hero {
+  font-size: var(--text-h1);
+  font-weight: var(--font-medium);
+  line-height: var(--line-height);
+  color: var(--text-light);
+  margin: var(--space-xl) 0;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-xl);
+  position: relative;
+  z-index: 100;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(224, 231, 255, 0.15);
+  box-shadow:
+    0 0 40px rgba(102, 126, 234, 0.2),
+    0 0 80px rgba(118, 75, 162, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: heroGlow 3s ease-in-out infinite;
+}
+
+.question-hero::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.3) 0%,
+    rgba(118, 75, 162, 0.2) 50%,
+    rgba(102, 126, 234, 0.3) 100%
+  );
+  background-size: 200% 200%;
+  opacity: 0.5;
+  z-index: -1;
+  animation: heroShimmer 4s linear infinite;
+}
+
+@keyframes heroGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 40px rgba(102, 126, 234, 0.2),
+      0 0 80px rgba(118, 75, 162, 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 60px rgba(102, 126, 234, 0.3),
+      0 0 100px rgba(118, 75, 162, 0.15),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes heroShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .question-hero {
+    font-size: var(--text-h2);
+    padding: var(--space-lg);
+  }
+}
+
+/* Hero Title - Enhanced "Constellate" on home page */
+.hero-title {
+  font-size: 72px;
+  font-weight: var(--font-bold);
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #EC4899 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 80px rgba(102, 126, 234, 0.5);
+  letter-spacing: -0.02em;
+  position: relative;
+  animation: titleGlow 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.4));
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 50px rgba(102, 126, 234, 0.6)) drop-shadow(0 0 80px rgba(118, 75, 162, 0.4));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 48px;
+  }
+}

@@ -16,17 +16,17 @@
   border: 2px solid transparent;
 }
 
-/* Primary Button - Enhanced glowing gradient with pulsing animation */
+/* Primary Button - Sophisticated glowing gradient */
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: white;
   box-shadow:
-    0 0 20px rgba(102, 126, 234, 0.4),
-    0 0 40px rgba(118, 75, 162, 0.2),
+    0 0 20px rgba(102, 126, 234, 0.3),
+    0 0 40px rgba(118, 75, 162, 0.15),
     0 4px 12px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
-  animation: buttonGlow 3s ease-in-out infinite;
+  animation: buttonGlow 4s ease-in-out infinite;
 }
 
 .btn-primary::before {
@@ -39,23 +39,23 @@
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.08) 50%,
     transparent 70%
   );
-  animation: shimmer 3s linear infinite;
+  animation: shimmer 6s linear infinite;
 }
 
 @keyframes buttonGlow {
   0%, 100% {
     box-shadow:
-      0 0 20px rgba(102, 126, 234, 0.4),
-      0 0 40px rgba(118, 75, 162, 0.2),
+      0 0 20px rgba(102, 126, 234, 0.3),
+      0 0 40px rgba(118, 75, 162, 0.15),
       0 4px 12px rgba(0, 0, 0, 0.3);
   }
   50% {
     box-shadow:
-      0 0 30px rgba(102, 126, 234, 0.6),
-      0 0 60px rgba(118, 75, 162, 0.3),
+      0 0 25px rgba(102, 126, 234, 0.4),
+      0 0 50px rgba(118, 75, 162, 0.2),
       0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }
@@ -72,8 +72,8 @@
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow:
-    0 0 40px rgba(102, 126, 234, 0.7),
-    0 0 80px rgba(118, 75, 162, 0.4),
+    0 0 35px rgba(102, 126, 234, 0.5),
+    0 0 70px rgba(118, 75, 162, 0.3),
     0 8px 20px rgba(0, 0, 0, 0.4);
 }
 

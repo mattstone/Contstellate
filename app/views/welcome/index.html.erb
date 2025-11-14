@@ -4,21 +4,18 @@
       <div class="max-w-md text-center stack-lg">
 
         <!-- App Title -->
-        <div class="stack-md">
-          <h1 class="text-display">Constellate</h1>
+        <div class="stack-sm">
+          <h1 class="hero-title">Constellate</h1>
           <p class="text-h2 text-dim font-regular">
-            Where conversations form<br>constellations of meaning
+            We are all one in a million
           </p>
         </div>
 
         <div class="spacer-xl"></div>
 
         <!-- Primary CTA -->
-        <div class="stack-sm" data-controller="navigate">
-          <%= link_to "Begin Your Journey", select_mode_path, class: "btn btn-primary btn-large btn-block" %>
-
-          <!-- Learn More (optional) -->
-          <!-- <button class="btn btn-secondary btn-block">Learn More</button> -->
+        <div class="stack-sm">
+          <%= link_to "Explore your inner universe", select_mode_path, class: "btn btn-primary btn-large btn-block" %>
         </div>
 
         <div class="spacer-md"></div>
@@ -29,6 +26,32 @@
             <%= link_to "View Past Reflections →", reflections_path, class: "text-dim" %>
           </div>
         <% end %>
+
+        <!-- About Link -->
+        <div class="text-small text-dim mt-sm" data-controller="modal">
+          <button data-action="click->modal#open" class="text-dim">
+            About
+          </button>
+
+          <!-- About Modal -->
+          <div class="modal hidden" data-modal-target="modal" data-action="click->modal#closeOnBackdrop">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title">About Constellate</h2>
+                <button class="modal-close" data-action="click->modal#close">×</button>
+              </div>
+              <div class="modal-body">
+                <p>Constellate helps you explore life's big questions—the ones that really matter.</p>
+
+                <p>Choose from 10 themed collections (we call them galaxies) covering everything from your career dreams to your life's purpose. Each contains thoughtful questions designed to spark genuine reflection and real conversation.</p>
+
+                <p>Use it alone for personal insights, or with friends to go deeper than small talk. Either way, you're building something meaningful: a clearer sense of yourself and stronger connections with others.</p>
+
+                <p>Based on positive psychology research, every question is designed to help you flourish—not just scroll.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>

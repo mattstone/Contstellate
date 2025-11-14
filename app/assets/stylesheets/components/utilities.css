@@ -94,34 +94,6 @@
   }
 }
 
-/* Starfield Background (subtle) */
-.starfield {
-  position: relative;
-  overflow: hidden;
-}
-
-.starfield::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, white, transparent),
-    radial-gradient(2px 2px at 60px 70px, white, transparent),
-    radial-gradient(1px 1px at 50px 50px, white, transparent),
-    radial-gradient(1px 1px at 130px 80px, white, transparent),
-    radial-gradient(2px 2px at 90px 10px, white, transparent);
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 0.3;
-  animation: twinkle 5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
-}
-
 /* Progress Indicator */
 .progress-bar {
   height: 4px;
