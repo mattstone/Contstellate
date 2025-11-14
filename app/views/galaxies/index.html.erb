@@ -8,6 +8,15 @@
         <%= button_to "Random Mode ⚡", random_galaxy_path, class: "btn btn-secondary btn-small" %>
       </div>
 
+      <!-- View Reflections Link -->
+      <% if Session.completed.any? %>
+        <div class="text-center mb-md">
+          <%= link_to reflections_path, class: "btn btn-secondary btn-small" do %>
+            📝 View your reflections
+          <% end %>
+        </div>
+      <% end %>
+
       <div class="text-center mb-lg">
         <h1 class="text-h1 mb-xs">Choose your galaxy</h1>
         <p class="text-small text-dim">(or tap Random for mixed questions)</p>

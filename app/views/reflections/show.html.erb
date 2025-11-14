@@ -1,2 +1,114 @@
-<h1>Reflections#show</h1>
-<p>Find me in app/views/reflections/show.html.erb</p>
+<div class="screen">
+  <div class="screen-content">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="flex justify-between items-center mt-md mb-lg">
+        <%= link_to "←", reflections_path, class: "btn btn-icon btn-secondary" %>
+        <h1 class="text-h1">Session Details</h1>
+        <div class="w-12"></div>
+      </div>
+
+      <!-- Session Info Card -->
+      <div class="card p-md mb-lg">
+        <div class="flex justify-between items-start mb-md">
+          <div>
+            <div class="text-h3 mb-xs">
+              <%= @session.created_at.strftime("%B %d, %Y") %>
+            </div>
+            <div class="text-small text-dim">
+              <%= @session.created_at.strftime("%l:%M %p") %>
+            </div>
+          </div>
+          <div class="badge">
+            <%= @session.mode == "solo" ? "🌟 Solo" : "✨ Group" %>
+          </div>
+        </div>
+
+        <!-- Galaxies Visited -->
+        <div class="mb-sm">
+          <div class="text-tiny text-dim mb-xs">Galaxies Explored</div>
+          <div class="flex gap-xs flex-wrap">
+            <% @visited_galaxies.each do |galaxy| %>
+              <div class="badge badge-galaxy" title="<%= galaxy.name %>">
+                <%= galaxy.icon %> <%= galaxy.name.gsub(' Star', '') %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex gap-md mt-md pt-md" style="border-top: 1px solid var(--color-border);">
+          <div class="flex-1 text-center">
+            <div class="text-h3"><%= @reflections.select(&:has_content?).count %></div>
+            <div class="text-tiny text-dim">Reflections</div>
+          </div>
+          <div class="flex-1 text-center">
+            <div class="text-h3"><%= @reflections.count %></div>
+            <div class="text-tiny text-dim">Total Questions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reflections List -->
+      <div class="stack-md">
+        <% @reflections.select(&:has_content?).each_with_index do |reflection, index| %>
+          <div class="card p-md">
+            <!-- Question -->
+            <div class="flex items-start gap-sm mb-sm">
+              <div class="text-h3 text-dim" style="min-width: 2rem;"><%= index + 1 %>.</div>
+              <div>
+                <div class="text-body font-semibold mb-xs">
+                  <%= reflection.question.content %>
+                </div>
+                <div class="badge badge-galaxy" title="<%= reflection.question.galaxy.name %>">
+                  <%= reflection.question.galaxy.icon %> <%= reflection.question.galaxy.name.gsub(' Star', '') %>
+                </div>
+              </div>
+            </div>
+
+            <!-- Answer -->
+            <div class="mt-md pt-md" style="border-top: 1px solid var(--color-border);">
+              <% if reflection.note.present? %>
+                <div class="text-body" style="white-space: pre-wrap;"><%= reflection.note %></div>
+              <% end %>
+
+              <% if reflection.voice_recording_url.present? %>
+                <div class="mt-sm">
+                  <audio controls class="w-full">
+                    <source src="<%= reflection.voice_recording_url %>" type="audio/webm">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+              <% end %>
+
+              <div class="text-tiny text-dim mt-sm">
+                <%= reflection.created_at.strftime("%l:%M %p") %>
+                <% if reflection.reflection_type == "both" %>
+                  · 📝 Note & 🎤 Voice
+                <% elsif reflection.reflection_type == "voice" %>
+                  · 🎤 Voice
+                <% elsif reflection.reflection_type == "note" %>
+                  · 📝 Note
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @reflections.select(&:has_content?).empty? %>
+          <div class="text-center mt-xl">
+            <div class="text-display mb-md">💭</div>
+            <div class="text-body text-dim">
+              No reflections captured in this session
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Bottom Spacing -->
+      <div class="spacer-xl"></div>
+
+    </div>
+  </div>
+</div>

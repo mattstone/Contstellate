@@ -131,7 +131,16 @@ class SessionsController < ApplicationController
     # Check if we have a current question in session
     if session[:current_question_id]
       question = Question.find_by(id: session[:current_question_id])
-      return question if question.present?
+      if question.present?
+        # Check if this question was already answered in this session
+        already_answered = @session.reflections.exists?(question_id: question.id)
+        if already_answered
+          # Question already answered, clear it and get next
+          session[:current_question_id] = nil
+          return get_next_question
+        end
+        return question
+      end
 
       # If question doesn't exist (e.g., DB was reseeded), clear the session
       session[:current_question_id] = nil
