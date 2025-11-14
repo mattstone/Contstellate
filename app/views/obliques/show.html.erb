@@ -1,0 +1,32 @@
+<div class="screen">
+  <div class="screen-content screen-center">
+    <div class="container fade-in">
+      <div class="max-w-md">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-xl">
+          <%= link_to "←", select_mode_path, class: "btn btn-icon btn-secondary" %>
+          <h2 class="text-h2">Obliques</h2>
+          <div class="w-12"></div>
+        </div>
+
+        <!-- Strategy Card -->
+        <div class="card p-xl text-center mb-lg" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
+          <p class="text-h2 font-regular">
+            <%= @strategy %>
+          </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="stack-sm">
+          <%= link_to random_oblique_path, class: "btn btn-primary btn-block" do %>
+            🎲 Draw Another
+          <% end %>
+
+          <%= link_to "Back to Modes", select_mode_path, class: "btn btn-secondary btn-block" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

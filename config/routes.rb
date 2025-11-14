@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get "mode/select", to: "modes#select", as: :select_mode
   post "mode/choose", to: "modes#choose", as: :choose_mode
 
+  # Oblique Strategies
+  get "oblique", to: "obliques#show", as: :oblique
+  get "oblique/random", to: "obliques#random", as: :random_oblique
+
   # Galaxy selection
   get "galaxies", to: "galaxies#index", as: :galaxies
   post "galaxies/choose", to: "galaxies#choose", as: :choose_galaxy
